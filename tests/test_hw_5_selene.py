@@ -32,6 +32,12 @@ def test_automation_practice_form():
     browser.element('.react-datepicker__month-select').element(by.text("June")).click()
     browser.element('.react-datepicker__day--015').click()
 
+    # Заполняем поле Subjects (предметы)
+    browser.element('#subjectsInput').type('English').press_enter()
+
+    # Выбираем хобби
+    browser.element('label[for="hobbies-checkbox-1"]').click()  # Выбираем "Sports"
+
     # Загрузка изображения (с использованием функции для получения пути)
     image_path = get_image_path('test.jpg')
     browser.element('#uploadPicture').send_keys(image_path)
@@ -60,6 +66,8 @@ def test_automation_practice_form():
     browser.element('.modal-body').should(have.text('2000'))
     browser.element('.modal-body').should(have.text('June'))
     browser.element('.modal-body').should(have.text('15'))
+    browser.element('.modal-body').should(have.text('English'))
+    browser.element('.modal-body').should(have.text('Sports'))
     browser.element('.modal-body').should(have.text('Moscow, Russia'))
     browser.element('.modal-body').should(have.text('NCR'))
     browser.element('.modal-body').should(have.text('Delhi'))
